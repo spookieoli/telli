@@ -8,8 +8,10 @@ type Token struct {
 
 // Tokenizer: struct to tokenize input
 type Tokenizer struct {
+	LanguageSet map[string]Token
 }
 
+// The Tokenizer is a singleton
 var T Tokenizer
 
 func init() {
