@@ -1,9 +1,19 @@
 package REPL
 
-import "fmt"
+import (
+	"fmt"
+	"telli/Tokenizer"
+)
 
 // REPL: struct to handle REPL
 type REPL struct {
+	Tokenizer Tokenizer.Tokenizer
+}
+
+var R REPL
+
+func init() {
+	R = REPL{Tokenizer: Tokenizer.T}
 }
 
 // RunREPL: runs the REPL
@@ -18,7 +28,8 @@ func (r *REPL) RunREPL() {
 			fmt.Println("Error reading command")
 		} else {
 			// TODO: lex and parse command
-			fmt.Println("Command: " + command)
+			fmt.Println(r.Tokenizer.Tokenize(command))
+			// TODO: output result
 		}
 	}
 }
